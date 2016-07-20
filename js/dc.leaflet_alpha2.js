@@ -11,35 +11,9 @@ dc.leafletChart = function (_chart) {
     var _defaultZoom = false;
 
     var _tiles = function (map) {
-         L.tileLayer.wms("http://geoserver-local/geoserver/gwc/service/wms", {
-            layers: 'BDEAS:SIGIS-WMS',
-            attribution: 'SIGIS R&D &copy;',
-            format: 'image/png',
-            transparent: true,
-            maxZoom: 15,
-            //minZoom: 6,
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
-        L.tileLayer.wms("http://geoserver-local/geoserver/wms", {
-            layers: 'BDEAS:patrullaje_inteligente',
-            format: 'image/png',
-            transparent: true,
-            zIndex:1,
-            opacity:0.8,
-            tiled: false
-        }).addTo(map);
-
-    /*
-    ?service=WMS
-    &version=1.1.0
-    &request=GetMap
-    &layers=BDEAS:patrullaje_inteligente
-    &srs=EPSG:4326
-    &format=application/openlayers
-    */
-    // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
     };
 
     _chart._doRender = function () {
